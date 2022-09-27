@@ -15,20 +15,16 @@ public class UserLoginService {
 
 	public String login(int userId, String password) {
 		Optional<User> userOptional = userLoginRepo.findById(userId);
-		if (userOptional.isPresent()) 
-		{
+		if (userOptional.isPresent()) {
 			User user = userOptional.get();
-			if (user.getPassword() == password) 
-			{
+			if (user.getPassword().equals(password)) {
 				return "Loging success";
 			} 
-			else
-			{
+			else{
 				return "password error";
 			}
 		}
-		else
-		{
+		else{
 			return "User not present";
 		}
 	}
